@@ -17,7 +17,7 @@ pip install -e .
 
 ## Usage
 
-You can use datapackage-pipelines-spss as a plugin for [dpp](https://github.com/frictionlessdata/datapackage-pipelines#datapackage-pipelines). In the pipeline-spec.yaml it will look like this:
+datapackage-pipelines-spss uses [tableschema-spss](https://github.com/frictionlessdata/tableschema-spss-py) to read SPSS .sav files and add tableschema descriptors to a datapackage. You can use datapackage-pipelines-spss as a plugin for [dpp](https://github.com/frictionlessdata/datapackage-pipelines#datapackage-pipelines). In the pipeline-spec.yaml it will look like this:
 
 ```yaml
   ...
