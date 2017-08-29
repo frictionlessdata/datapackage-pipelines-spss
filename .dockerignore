@@ -1,0 +1,6 @@
+.git/
+.idea/
+datapacakge_pipelines_spss.egg-info/
+tests/
+.dpp.db
+
