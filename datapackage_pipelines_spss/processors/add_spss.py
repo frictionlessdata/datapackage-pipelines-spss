@@ -19,7 +19,7 @@ field_names = [f['name'] for f in descriptor['fields']]
 resource_content = [dict(zip(field_names, r)) for r in storage.iter(path)]
 
 resource = {
-    'name': slugify(path),
+    'name': slugify(path).lower(),
     'path': 'data/{}.csv'.format(slugify(path))
 }
 
