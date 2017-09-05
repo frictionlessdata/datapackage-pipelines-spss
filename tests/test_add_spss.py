@@ -45,7 +45,7 @@ class TestAddSpssProcessor(unittest.TestCase):
         # Asserts for the datapackage
         dp_resources = spew_dp['resources']
         assert len(dp_resources) == 1
-        assert dp_resources[0]['name'] == 'data-Employee-data-sav'
+        assert dp_resources[0]['name'] == 'data-employee-data-sav'
         field_names = \
             [field['name'] for field in dp_resources[0]['schema']['fields']]
         assert field_names == [
