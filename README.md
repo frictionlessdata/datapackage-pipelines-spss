@@ -26,5 +26,5 @@ datapackage-pipelines-spss uses [tableschema-spss](https://github.com/frictionle
       source: data/my-file.sav
 ```
 
-This will add the file defined at `source` as a tabular resource to the pipeline.
+This will add the file defined at `source` as a tabular resource to the pipeline. `source` can be either a file path, or a url starting with `http` or `https`.
 
