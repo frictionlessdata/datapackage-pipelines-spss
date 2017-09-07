@@ -4,13 +4,22 @@ from datapackage_pipelines.generators import slugify
 from datapackage_pipelines.wrapper import ingest, spew
 
 from tableschema_spss import Storage
+from tabulator.helpers import detect_scheme_and_format
 
 import logging
 log = logging.getLogger(__name__)
 
 parameters, datapackage, res_iter = ingest()
 
-path = parameters['path']
+source = parameters['source']
+source_scheme, source_format = detect_scheme_and_format(source)
+
+# source_format must be 'sav' or 'zsav', right?
+if source_format not in ['sav', 'zsav']:
+    raise RuntimeError('Source format must be either .sav or .zsav.')
+
+if source_scheme == 'file':
+    path = source
 
 storage = Storage()
 

@@ -23,8 +23,8 @@ datapackage-pipelines-spss uses [tableschema-spss](https://github.com/frictionle
   ...
   - run: spss.add_spss
     parameters:
-      path: data/my-file.sav
+      source: data/my-file.sav
 ```
 
-This will add the file defined at `path` as a tabular resource to the pipeline.
+This will add the file defined at `source` as a tabular resource to the pipeline.
 

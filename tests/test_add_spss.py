@@ -26,7 +26,7 @@ class TestAddSpssProcessor(unittest.TestCase):
             'resources': []
         }
         params = {
-            'path': 'data/Employee data.sav'
+            'source': 'data/Employee data.sav'
         }
 
         # Path to the processor we want to test
@@ -72,3 +72,24 @@ class TestAddSpssProcessor(unittest.TestCase):
              'educ': 15, 'jobcat': 3, 'salary': Decimal('57000'),
              'salbegin': Decimal('27000'), 'jobtime': 98, 'prevexp': 144,
              'minority': 0}
+
+    def test_add_spss_processor_from_path_bad_format(self):
+        '''source with bad format raises exception'''
+
+        # input arguments used by our mock `ingest`
+        datapackage = {
+            'name': 'my-datapackage',
+            'project': 'my-project',
+            'resources': []
+        }
+        params = {
+            'source': 'data/Employee data.csv'
+        }
+
+        # Path to the processor we want to test
+        processor_dir = \
+            os.path.dirname(datapackage_pipelines_spss.processors.__file__)
+        processor_path = os.path.join(processor_dir, 'add_spss.py')
+
+        with self.assertRaises(RuntimeError):
+            mock_processor_test(processor_path, (params, datapackage, []))
