@@ -19,7 +19,7 @@ PACKAGE = 'datapackage_pipelines_spss'
 NAME = PACKAGE.replace('_', '-')
 INSTALL_REQUIRES = [
     'tableschema-spss>=0.2.0',
-    'datapackage-pipelines'
+    'datapackage-pipelines>=1.0,<2.0'
 ]
 TESTS_REQUIRE = [
     'pylama',
