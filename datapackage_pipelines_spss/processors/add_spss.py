@@ -37,8 +37,6 @@ else:
 
 storage = Storage()
 descriptor = storage.describe(path)
-field_names = [f['name'] for f in descriptor['fields']]
-resource_content = [dict(zip(field_names, r)) for r in storage.iter(path)]
 
 resource = {
     'name': filename.lower(),
@@ -50,4 +48,12 @@ resource['schema'] = descriptor
 
 datapackage['resources'].append(resource)
 
-spew(datapackage, itertools.chain(res_iter, [resource_content]))
+
+def process_resource(path, descriptor):
+    field_names = [f['name'] for f in descriptor['fields']]
+    for r in storage.iter(path):
+        yield dict(zip(field_names, r))
+
+
+spew(datapackage, itertools.chain(res_iter, [process_resource(path,
+                                                              descriptor)]))

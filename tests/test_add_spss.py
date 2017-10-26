@@ -67,8 +67,8 @@ class TestAddSpssProcessor(unittest.TestCase):
         spew_res_iter_contents = list(spew_res_iter)
         # One resourse
         assert len(spew_res_iter_contents) == 1
-        rows = spew_res_iter_contents[0]
-        assert len(list(rows)) == 474
+        rows = list(spew_res_iter_contents[0])
+        assert len(rows) == 474
         assert rows[0] == \
             {'id': 1, 'gender': 'm', 'bdate': datetime.date(1952, 2, 3),
              'educ': 15, 'jobcat': 3, 'salary': Decimal('57000'),
@@ -132,8 +132,8 @@ class TestAddSpssProcessor(unittest.TestCase):
         spew_res_iter_contents = list(spew_res_iter)
         # One resourse
         assert len(spew_res_iter_contents) == 1
-        rows = spew_res_iter_contents[0]
-        assert len(list(rows)) == 474
+        rows = list(spew_res_iter_contents[0])
+        assert len(rows) == 474
         assert rows[0] == \
             {'id': 1, 'gender': 'm', 'bdate': datetime.date(1952, 2, 3),
              'educ': 15, 'jobcat': 3, 'salary': Decimal('57000'),
