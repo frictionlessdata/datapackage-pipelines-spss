@@ -7,6 +7,7 @@ import requests
 
 from datapackage_pipelines.generators import slugify
 from datapackage_pipelines.wrapper import ingest, spew
+from datapackage_pipelines.utilities.resources import PROP_STREAMING
 
 from tableschema_spss import Storage
 from tabulator.helpers import detect_scheme_and_format
@@ -35,14 +36,14 @@ else:
     raise RuntimeError('Source scheme must be either a file path or url.')
 
 storage = Storage()
-
 descriptor = storage.describe(path)
 field_names = [f['name'] for f in descriptor['fields']]
 resource_content = [dict(zip(field_names, r)) for r in storage.iter(path)]
 
 resource = {
     'name': filename.lower(),
-    'path': 'data/{}.csv'.format(filename)
+    'path': 'data/{}.csv'.format(filename),
+    PROP_STREAMING: True
 }
 
 resource['schema'] = descriptor
